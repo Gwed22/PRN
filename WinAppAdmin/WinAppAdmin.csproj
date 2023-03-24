@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="engmsw3n.yem~" />
+    <None Remove="wtwj4kie.bhy~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Final.Business\Final.Business.csproj" />
+    <ProjectReference Include="..\Final.Lib\Final.Lib.csproj" />
+  </ItemGroup>
+
+</Project>

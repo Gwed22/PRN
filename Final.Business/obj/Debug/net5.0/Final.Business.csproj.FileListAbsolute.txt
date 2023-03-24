@@ -1,0 +1,15 @@
+E:\PRN211\PRNFinal\Final.Business\bin\Debug\net5.0\Final.Business.deps.json
+E:\PRN211\PRNFinal\Final.Business\bin\Debug\net5.0\Final.Business.runtimeconfig.json
+E:\PRN211\PRNFinal\Final.Business\bin\Debug\net5.0\Final.Business.runtimeconfig.dev.json
+E:\PRN211\PRNFinal\Final.Business\bin\Debug\net5.0\Final.Business.dll
+E:\PRN211\PRNFinal\Final.Business\bin\Debug\net5.0\Final.Business.pdb
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.csproj.AssemblyReference.cache
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.GeneratedMSBuildEditorConfig.editorconfig
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.AssemblyInfoInputs.cache
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.AssemblyInfo.cs
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.csproj.CoreCompileInputs.cache
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.dll
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\refint\Final.Business.dll
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.pdb
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\Final.Business.genruntimeconfig.cache
+E:\PRN211\PRNFinal\Final.Business\obj\Debug\net5.0\ref\Final.Business.dll

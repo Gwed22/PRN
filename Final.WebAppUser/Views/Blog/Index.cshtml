@@ -1,0 +1,186 @@
+﻿@using Final.Business.BusinessObject;
+@using Microsoft.AspNetCore.Http;
+@model IEnumerable<Final.Business.BusinessObject.Blog>
+@using Final.Lib.Repository;
+@{
+    ViewData["Title"] = "HOME";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<style type="text/css">
+    .head {
+        text-align: center;
+    }
+
+    .title {
+        background-color: gray;
+        color: white;
+        padding: 10px 0px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .a {
+        color: white !important;
+    }
+
+    .link {
+        color: red;
+    }
+
+    .mucluc {
+        margin-left: 20px;
+        font-size: 16px;
+        
+    }
+
+    .search {
+        text-align: right;
+    }
+
+    .a-sort {
+        color: black !important;
+    }
+    li {
+        list-style: none;
+    }
+
+    style >
+    * {
+        font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    }
+
+    .header-title {
+        text-align: center;
+        font-size: 36px;
+    }
+
+    .header-subtitle {
+        font-size: 16px;
+        margin-left: 10px;
+    }
+
+    .image-blog {
+        border-radius: 5%;
+        box-shadow: 5px 5px 0.8px grey;
+        width: 240px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .view-button {
+        margin-top: 10px;
+        border: 1px solid black;
+        border-radius: 10%;
+        background-color: cornflowerblue;
+        width: 60px;
+        height: 40px;
+        display: inline-block;
+    }
+    
+   
+    .sort-button{
+        text-decoration: none;
+        border-radius: 10%;
+        background-color: royalblue;
+        color:white;
+        margin: 1.5% 0 1% 1%;    
+        padding: 0.5% 1%;
+        border:none;
+        transition: 1s;
+    }
+
+    .sort-button:hover {
+            background-color: darkblue;
+        }
+</style>
+<h1 class="head">BLOG OF GROUP2</h1>
+<div class="container search">
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="get" asp-controller="Blog" asp-action="Search" class="search-form">
+                <input type="text" name="query" id="s" size="20" height="25" required />
+                <button type="submit" title="Search" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container title">
+    <div class="row">
+        
+        <div class=" mucluc"><a class="a" href="~/blog/Index">Home</a></div>
+        @foreach (var cate in ViewData["cate"] as IEnumerable<Category>)
+        {
+            <div class="header-subtitle"><a class="a" href="~/blog/Index?id=@cate.CateId">@Html.DisplayFor(catec => cate.CateName)</a></div>
+        }
+    </div>
+</div>
+<button class="sort-button" onclick="showSort()">Sort</button>
+<ul class="sort" id="sort" style="display:none">
+    <li class="clm"><a class="a-sort" asp-action="SortByDateAsc">Sort Date Ascending</a></li>
+    <li class ="clm"><a class="a-sort" asp-action="SortByDateDsc">Sort Date Descending</a></li>
+    <li class="clm"><a class="a-sort" asp-action="SortByNameAsc">Sort Name Ascending</a></li>
+    <li class="clm"><a class="a-sort" asp-action="SortByNameDsc">Sort Name Descending</a></li>
+</ul>
+<h1>@ViewBag.Message</h1>
+<table class="table">
+    <thead>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width: 240px; margin: 0px;">
+                    <div><img style="width: 100%;" src="@Html.DisplayFor(modelItem => item.Img) "></div>
+                </td>
+                <td>
+                    <div style="font-size: 24px; font-weight: bold;">@Html.DisplayFor(modelItem => item.Title)</div>
+                    <br>
+                    <div style="color: gray">@Html.DisplayFor(modelItem => item.Cate.CateName)</div>
+                    <br>
+                    <div style="color: gray">@Html.DisplayFor(modelItem => item.DatePost)</div>
+                    <br>
+                    @Html.DisplayFor(modelItem => item.Decs)
+                </td>
+                <td>
+                    <a class="btn-primary btn" asp-action="Details" asp-route-id="@item.BlogId">View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    var sort = document.getElementById('sort')
+    function showSort() {
+        if (sort.style.display === 'none') {
+            sort.style.display = 'block'
+        } else {
+            sort.style.display = 'none'
+        }
+    }
+
+    const sr = ScrollReveal({
+        origin: "left",
+        distance: "80px",
+        duration: 2000,
+        reset: true,
+    });
+    const sv = ScrollReveal({
+        origin: "top",
+        duration: 2000
+        
+    });
+
+    
+    sr.reveal(".table", { delay: 100 });
+    sr.sv(".clm", { delay: 100 });
+
+
+</script>

@@ -1,0 +1,105 @@
+﻿@using Final.Business.BusinessObject;
+@using Microsoft.AspNetCore.Http;
+@model Final.Business.BusinessObject.Blog
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/scrollreveal"></script>
+<style>
+    * {
+        font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    }
+
+    .detail-image {
+        width: 50%;
+        border-radius: 5%;
+        box-shadow: 0px 3px 8px black;
+    }
+
+    .detail-title {
+        font-size: 42px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .blog-context {
+        text-align: justify;
+        font-size: 20px;
+        margin-top: 5%;
+    }
+
+    .back-button {
+        color: darkslategray;
+        font-size: 16px;
+        transition: 1s;
+    }
+
+        .back-button:hover {
+            color: black;
+        }
+
+    .comment{
+        margin-top:3%;
+    }
+
+    .comment-context{
+        margin-left:4%;
+        margin-bottom:4%;
+    }
+</style>
+<div>
+    <a class="back-button" style="text-decoration:none;" asp-action="Index">Back to list</a>
+</div>
+<div class="container">
+    <hr />
+    <dl class="row">
+        <div class="container detail-title">
+            <dd class="col-sm-12" style="text-align:center">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+        </div>
+        <dd class="col-sm-12" style="text-align: center;">
+            <img class="detail-image" src="@Html.DisplayFor(model => model.Img)" />
+        </dd>
+        <dd class="container blog-context">
+            <p class="col-sm-12"> @Html.DisplayFor(model => model.BlogContext)</p>
+        </dd>
+    </dl>
+</div>
+
+
+<div>
+    Comment: 
+    <form method="get" asp-controller="Comment" asp-action="Comment" class="comment-form">
+        <input type="text" name="blogid" id="b" style="display:none;" value="@Model.BlogId"/>
+        <input type="text" name="accid" style="display:none;" id="a" value="@Context.Session.GetInt32("accId")"/>
+        <input type="text" name="context" id="s" size="100" height="1000" style="padding: 50px 0px;" required />
+        <div style="margin-top: 10px;"><button type="submit" title="Search" class="btn btn-primary">Comment</button></div>
+    </form>
+</div>
+
+@foreach (var comt in ViewData["cmt"] as IEnumerable<Comment>)
+{
+    <div class="comment">
+    <div style="font-weight: bold;">@comt.Account.FullName</div>
+    <div class="comment-context">@comt.Context</div>
+    </div>
+}
+<script>
+    const sr = ScrollReveal({
+        origin: "top",
+        distance: "80px",
+        duration: 2000,
+        reset: true,
+    });
+
+    sr.reveal(".detail-title", {});
+    sr.reveal(".detail-image", { delay: 100 });
+    sr.reveal(".blog-context", { delay: 400 });
+    sr.reveal(".back-button", { interval: 100 });
+    sr.reveal(".comment-form", { interval: 100 });
+    sr.reveal(".comment", { delay: 200 });
+
+</script>
